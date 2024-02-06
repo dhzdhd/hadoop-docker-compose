@@ -5,14 +5,14 @@ source 'colors'
 printf "${FG_BROWN}Restarting SSH... "
 service ssh restart >/dev/nul
 printf "${FG_GREEN}Done!\n${FG_BROWN}Stopping all processes... "
-/usr/local/hadoop/sbin/stop-hbase.sh >/dev/nul
-/usr/local/hadoop/sbin/stop-all.sh >/dev/nul
+stop-hbase.sh >/dev/nul
+stop-all.sh >/dev/nul
 printf "${FG_GREEN}Done!\n${FG_BROWN}Formatting HDFS... "
 hdfs namenode -format &>/dev/nul
 
 printf "${FG_GREEN}Done!\n${FG_BROWN}Starting up all processes... "
-/usr/local/hadoop/sbin/start-all.sh >/dev/nul
-/usr/local/hadoop/sbin/start-hbase.sh >/dev/nul
+start-all.sh >/dev/nul
+start-hbase.sh >/dev/nul
 
 printf "${FG_GREEN}Done!\n${FG_BROWN}Setting up Hive... "
 hdfs dfs -mkdir /tmp >/dev/nul

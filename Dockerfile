@@ -115,6 +115,6 @@ EXPOSE 9870 8088 9000
 
 FROM base as master
 
-RUN bash init
+EXPOSE 9870 8088 9000
 
 CMD ["python3", "-m", "http.server"]
