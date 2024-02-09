@@ -15,9 +15,7 @@ Derived from the [docker-hadoop repo](https://github.com/silicoflare/docker-hado
   - Install docker.
   - Run `./run.ps1`.
   - Run `docker exec -it <container> /bin/bash` where `<container>` is the output of the previous step.
-  - Inside the container that you just opened, run
-    - `bash`
-    - `init`
+  - Inside the container that you just opened, run `init`
 - Docker desktop interface
   - Click on the container named `master`
   - Head on to the `Exec` tab
