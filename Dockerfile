@@ -10,8 +10,11 @@ ENV YARN_NODEMANAGER_USER=root
 ENV YARN_RESOURCEMANAGER_USER=root
 
 # Install necessary dependencies
-RUN apt-get update && \
-    apt-get install -y ssh openjdk-8-jdk neovim junit python-is-python3 nano curl python3-pip
+RUN apt update
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:maveonair/helix-editor
+RUN apt update && \
+    apt install -y ssh openjdk-8-jdk neovim helix junit python-is-python3 nano curl python3-pip
 
 # Download and extract Hadoop
 RUN mkdir -p $HADOOP_HOME && \
