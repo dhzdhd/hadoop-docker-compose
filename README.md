@@ -13,11 +13,15 @@ Derived from the [docker-hadoop repo](https://github.com/silicoflare/docker-hado
 
 - Windows
   - Install docker.
+  - Run docker desktop to start the engine
+  - Clone the repository locally
+  - Open the repository in VSCode and change the `init`, `restart` and `colors` (present in `/config`) file EOL sequences from CRLF to LF
   - Run `./run.ps1`.
   - Run `docker exec -it <container> /bin/bash` where `<container>` is the output of the previous step.
   - Inside the container that you just opened, run `init`
 - Docker desktop interface
-  - Click on the container named `master`
+  - Follow step 1, 2, 3 and 4 from above
+  - Open docker desktop and click on the container named `master`
   - Head on to the `Exec` tab
   - Run the following
     - `bash`
