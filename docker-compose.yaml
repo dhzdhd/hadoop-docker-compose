@@ -11,20 +11,5 @@ services:
       - 8088:8088
       - 9000:9000
       - 9870:9870
-    # networks:
-    #   cluster:
-    #     ipv4_address: 172.7.0.2
-
-  # client:
-  #   container_name: client
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-# networks:
-#   cluster:
-#     name: cluster
-#     driver: bridge
-#     ipam:
-#       config:
-#         - subnet: 172.7.0.0/16
-#           gateway: 172.7.0.1
+    volumes:
+      - ./workdir:/workdir

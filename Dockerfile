@@ -113,6 +113,17 @@ RUN rm *.tar.gz && \
 # Remove code in .bashrc
 RUN sed -i 5,7d ~/.bashrc
 
+# Add custom config to Helix
+COPY config/helix/config.toml ~/.config/helix/config.toml
+
+# Download LSP for Python, Scala
+RUN apt install python3-pylsp -y
+RUN curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs && \
+    chmod +x cs && \
+    ./cs setup -y && \
+    ./cs install metals && \
+    echo export PATH="$PATH:/root/.local/share/coursier/bin" >> ~/.bashrc
+
 # Expose necessary ports
 EXPOSE 9870 8088 9000
 

@@ -1,0 +1,40 @@
+theme = "tokyonight_storm"
+
+[editor]
+shell = ["ps", "/C"]
+line-number = "relative"
+auto-save = true
+completion-replace = true
+completion-trigger-len = 1
+bufferline = "multiple"
+color-modes = true
+true-color = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending"]
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[keys.insert]
+i = { i = "normal_mode" }
+
+[keys.normal.g]
+f = ":run-shell-command git pull"
+p = ":run-shell-command git push"
+y = ":run-shell-command git pull; git push"
+s = ":run-shell-command git status"
+i = ":run-shell-command git init"
