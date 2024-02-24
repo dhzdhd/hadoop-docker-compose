@@ -122,7 +122,7 @@ RUN curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linu
     chmod +x cs && \
     ./cs setup -y && \
     ./cs install metals && \
-    echo export PATH="$PATH:/root/.local/share/coursier/bin" >> ~/.bashrc
+    echo "export PATH=\$PATH:/root/.local/share/coursier/bin" >> ~/.bashrc
 
 # Expose necessary ports
 EXPOSE 9870 8088 9000
