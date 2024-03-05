@@ -1,4 +1,6 @@
+Write-Output "Starting up container"
 docker compose up -d
+docker exec -it master /bin/bash
 
-$container = docker container ls --all --quiet --filter "name=master"
-Write-Output $container
+Write-Output "Exiting container"
+docker compose down
