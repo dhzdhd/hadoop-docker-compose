@@ -65,7 +65,7 @@ RUN wget -O pig.tar.gz https://downloads.apache.org/pig/pig-0.17.0/pig-0.17.0.ta
     echo "export PIG_CLASSPATH=\$HADOOP_HOME/etc/hadoop" >> ~/.bashrc
 
 # Install hbase
-RUN wget http://apache.mirror.gtcomm.net/hbase/stable/hbase-2.5.7-bin.tar.gz && \
+RUN wget https://dlcdn.apache.org/hbase/2.5.7/hbase-2.5.7-bin.tar.gz && \
     tar -xzvf hbase-2.5.7-bin.tar.gz && \
     mv hbase-2.5.7 /usr/local/hbase && \
     echo "export HBASE_HOME=/usr/local/hbase" >> ~/.bashrc && \
