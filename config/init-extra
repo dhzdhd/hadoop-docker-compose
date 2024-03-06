@@ -21,6 +21,14 @@ hdfs dfs -mkdir -p /user/hive/warehouse >/dev/nul
 hdfs dfs -chmod g+w /user/hive/warehouse >/dev/nul
 schematool -dbType derby -initSchema &>/dev/nul
 
+printf "${FG_GREEN}Done!\n${FG_BROWN}Starting ZooKeeper server... "
+zookeeper-server-start.sh usr/local/kafka/config/zookeeper.properties &
+sleep 1s
+
+printf "${FG_GREEN}Done!\n${FG_BROWN}Starting Kafka server... "
+kafka-server-start.sh /usr/local/kafka/config/server.properties &
+sleep 1s
+
 printf "${FG_GREEN}Done!\n${FG_BROWN}Checking processes... "
 printf "\n${FG_BLUE}$(jps | wc -l) processes.${RESET}\n"
 printf "Enter ${FG_BLUE}source ~/.bashrc${RESET} to see changes!\n"

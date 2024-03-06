@@ -121,13 +121,32 @@ RUN wget https://downloads.apache.org/mahout/14.1/apache-mahout-distribution-14.
     echo "export MAHOUT_HOME=/usr/local/mahout" >> ~/.bashrc && \
     echo "export PATH=\$PATH:\$MAHOUT_HOME/bin" >> ~/.bashrc
 
+# Install Maven
+RUN wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz && \
+    tar -xzvf apache-maven-3.9.6-bin.tar.gz && \
+    mv apache-maven-3.9.6 /usr/local/maven && \
+    echo "export MAVEN_HOME=/usr/local/maven" >> ~/.bashrc && \
+    echo "export PATH=\$PATH:\$MAVEN_HOME/bin" >> ~/.bashrc
+
+# Download LSP for Python, Scala
+RUN apt install python3-pylsp -y
+RUN curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs && \
+    chmod +x cs && \
+    ./cs setup -y && \
+    ./cs install metals && \
+    echo "export PATH=\$PATH:/root/.local/share/coursier/bin" >> ~/.bashrc
+
 # Copy init and restart scripts
 COPY config/restart $HADOOP_HOME/bin/restart
 COPY config/init $HADOOP_HOME/bin/init
 COPY config/colors $HADOOP_HOME/bin/colors
+COPY config/init-extra $HADOOP_HOME/bin/init-extra
+COPY config/restart-extra $HADOOP_HOME/bin/restart-extra
 RUN chmod +x $HADOOP_HOME/bin/restart && \
     chmod +x $HADOOP_HOME/bin/colors && \
-    chmod +x $HADOOP_HOME/bin/init
+    chmod +x $HADOOP_HOME/bin/init && \
+    chmod +x $HADOOP_HOME/bin/init-extra && \
+    chmod +x $HADOOP_HOME/bin/restart-extra
 
 # Cleaning up archives
 RUN rm *.tar.gz && \
@@ -138,14 +157,6 @@ RUN sed -i 5,7d ~/.bashrc
 
 # Add custom config to Helix
 COPY config/helix/config.toml ~/.config/helix/config.toml
-
-# Download LSP for Python, Scala
-RUN apt install python3-pylsp -y
-RUN curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs && \
-    chmod +x cs && \
-    ./cs setup -y && \
-    ./cs install metals && \
-    echo "export PATH=\$PATH:/root/.local/share/coursier/bin" >> ~/.bashrc
 
 # Expose necessary ports
 EXPOSE 9870 8088 9000

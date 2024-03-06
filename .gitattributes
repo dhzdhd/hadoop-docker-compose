@@ -1,3 +1,5 @@
 colors eol=lf
 init eol=lf
 restart eol=lf
+init-extra eol=lf
+restart-extra eol=lf

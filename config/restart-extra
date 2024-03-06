@@ -7,20 +7,18 @@ service ssh restart >/dev/nul
 printf "${FG_GREEN}Done!\n${FG_BROWN}Stopping all processes... "
 stop-hbase.sh >/dev/nul
 stop-all.sh >/dev/nul
-printf "${FG_GREEN}Done!\n${FG_BROWN}Formatting HDFS... "
-hdfs namenode -format &>/dev/nul
 
 printf "${FG_GREEN}Done!\n${FG_BROWN}Starting up all processes... "
 start-all.sh >/dev/nul
 start-hbase.sh >/dev/nul
 
-printf "${FG_GREEN}Done!\n${FG_BROWN}Setting up Hive... "
-hdfs dfs -mkdir /tmp >/dev/nul
-hdfs dfs -chmod g+w /tmp >/dev/nul
-hdfs dfs -mkdir -p /user/hive/warehouse >/dev/nul
-hdfs dfs -chmod g+w /user/hive/warehouse >/dev/nul
-schematool -dbType derby -initSchema &>/dev/nul
+printf "${FG_GREEN}Done!\n${FG_BROWN}Starting ZooKeeper server... "
+zookeeper-server-start.sh usr/local/kafka/config/zookeeper.properties &
+sleep 1s
+
+printf "${FG_GREEN}Done!\n${FG_BROWN}Starting Kafka server... "
+kafka-server-start.sh /usr/local/kafka/config/server.properties &
+sleep 1s
 
 printf "${FG_GREEN}Done!\n${FG_BROWN}Checking processes... "
 printf "\n${FG_BLUE}$(jps | wc -l) processes.${RESET}\n"
-printf "Enter ${FG_BLUE}source ~/.bashrc${RESET} to see changes!\n"
