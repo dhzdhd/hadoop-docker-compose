@@ -13,3 +13,4 @@ services:
       - 9870:9870
     volumes:
       - ./workdir:/workdir
+      - ./config/hdfs:/home/hadoop/hdfs
