@@ -86,9 +86,9 @@ RUN wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz &
     echo "HADOOP_HOME=/usr/local/hadoop" >> /usr/local/hive/bin/hive-config.sh
 
 # Install Zookeeper
-RUN wget https://downloads.apache.org/zookeeper/zookeeper-3.9.1/apache-zookeeper-3.9.1-bin.tar.gz && \
-    tar -xvf apache-zookeeper-3.9.1-bin.tar.gz && \
-    mv apache-zookeeper-3.9.1-bin /usr/local/zookeeper && \
+RUN wget https://downloads.apache.org/zookeeper/stable/apache-zookeeper-3.8.4.tar.gz && \
+    tar -xvf apache-zookeeper-3.8.4-bin.tar.gz && \
+    mv apache-zookeeper-3.8.4-bin /usr/local/zookeeper && \
     mv /usr/local/zookeeper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg && \
     echo "export ZOOKEEPER_HOME=/usr/local/zookeeper" >> ~/.bashrc && \
     echo "export PATH=\$PATH:\$ZOOKEEPER_HOME/bin" >> ~/.bashrc
