@@ -18,7 +18,7 @@ RUN apt update && \
 
 # Download and extract Hadoop
 RUN mkdir -p $HADOOP_HOME && \
-    wget -O hadoop.tar.gz https://downloads.apache.org/hadoop/common/stable/hadoop-3.3.6.tar.gz && \
+    wget -O hadoop.tar.gz https://downloads.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz && \
     tar -xzvf hadoop.tar.gz -C $HADOOP_HOME --strip-components=1
 
 # Configure SSH
