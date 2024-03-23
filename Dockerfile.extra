@@ -14,11 +14,11 @@ RUN apt update
 RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:maveonair/helix-editor
 RUN apt update && \
-    apt install -y ssh openjdk-8-jdk neovim helix junit python-is-python3 nano curl python3-pip sudo
+    apt install -y ssh openjdk-8-jdk neovim helix junit python-is-python3 nano curl python3-pip
 
 # Download and extract Hadoop
 RUN mkdir -p $HADOOP_HOME && \
-    wget -O hadoop.tar.gz https://downloads.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz && \
+    wget -O hadoop.tar.gz https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz && \
     tar -xzvf hadoop.tar.gz -C $HADOOP_HOME --strip-components=1
 
 # Configure SSH
