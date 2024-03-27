@@ -8,7 +8,7 @@ printf "${FG_GREEN}Done!\n${FG_BROWN}Stopping all processes... "
 stop-hbase.sh >/dev/nul
 stop-all.sh >/dev/nul
 printf "${FG_GREEN}Done!\n${FG_BROWN}Formatting HDFS... "
-hdfs namenode -format &>/dev/nul
+hdfs namenode -format -force &>/dev/nul
 
 printf "${FG_GREEN}Done!\n${FG_BROWN}Starting up all processes... "
 start-all.sh >/dev/nul

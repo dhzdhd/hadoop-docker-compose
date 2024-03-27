@@ -3,10 +3,7 @@ version: "3"
 services:
   master:
     container_name: master
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: master
+    image: ghcr.io/dhzdhd/hadoop-docker-compose:v1.2.5
     ports:
       - 8088:8088
       - 9000:9000
