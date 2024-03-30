@@ -8,5 +8,6 @@ services:
       - 8088:8088
       - 9000:9000
       - 9870:9870
+      - 4040:4040
     volumes:
       - ./workdir:/workdir
