@@ -64,6 +64,12 @@ Derived from the [docker-hadoop repo](https://github.com/silicoflare/docker-hado
 
 - The current configuration does not store any data on HDFS/HBase. Please backup everything you create in the `/workdir` directory which is directly mapped to your system.
 
+### Hive MetastoreSessionClient error
+
+- Hive should always be started from the `/` directory (root)
+- When you enter the container, the default directory is the root directory
+- Starting Hive from any other directory causes the metastore to get corrupted
+
 ### Any sort of Hadoop error (MapReduce/Hive/HBase)
 
 - Exit the container (`exit`), `./run.ps1`|`.run.sh` and `init`
