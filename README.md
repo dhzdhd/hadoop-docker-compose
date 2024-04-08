@@ -74,6 +74,21 @@ Derived from the [docker-hadoop repo](https://github.com/silicoflare/docker-hado
 
 - Exit the container (`exit`), `./run.ps1`|`.run.sh` and `init`
 
+### Pig takes way too much time and produces errors in mapreduce mode
+
+- Start the job history server with `mapred historyserver &` (press enter to exit the logs)
+- Run pig in mapreduce mode as normal
+
+### ./run.ps1 not recognised as a command (Windows only)
+
+- This error occurs when you are using command prompt
+- run.ps1 is a PowerShell file and hence should be run with PowerShell only
+
+### run.ps1 cannot be loaded because running scripts is disabled on this system (Windows only)
+
+- Enable running foreign scripts in `Developer Settings` in the Settings application.
+- Refer to the net for more information.
+
 ### Hadoop errors out after `restart`
 
 - `restart` has been deprecated
